@@ -113,8 +113,8 @@
                 if (flag == array.count - 1) {
                     i = array.count;
                 }
-                long int c = (long)[number integerValue];
-                NSNumber * b = [NSNumber numberWithLong:c];
+                 double c = (double)[number doubleValue];
+                NSNumber * b = [NSNumber numberWithDouble:c];
                 [suffix addObject:b];
             }
         }
@@ -135,34 +135,34 @@
         for (int i = 0; i < suffix.count; i++){
             if ([suffix[i]  isEqual: @"+"] || [suffix[i]  isEqual: @"-"] || [suffix[i]  isEqual: @"*"] || [suffix[i]  isEqual: @"/"]) {
                 if ([suffix[i]  isEqual: @"+"]) {
-                    long int  j = _numberArray.count - 1;
-                    long int n = [_numberArray[j] intValue];
-                    long int m = [_numberArray[j - 1] intValue];
-                    NSNumber *p = [NSNumber numberWithLong:m + n];
+                     long int  j = _numberArray.count - 1;
+                    double n = [_numberArray[j] doubleValue];
+                    double m = [_numberArray[j - 1] doubleValue];
+                    NSNumber *p = [NSNumber numberWithDouble:m + n];
                     [_numberArray removeObjectAtIndex:j];
                     [_numberArray removeObjectAtIndex:j-1];
                     [_numberArray addObject:p];
                 } else if ([suffix[i]  isEqual: @"-"]) {
                     long int  j = _numberArray.count - 1;
-                    long int n = [_numberArray[j] intValue];
-                    long int m = [_numberArray[j - 1] intValue];
-                    NSNumber *p = [NSNumber numberWithLong:m - n];
+                    double n = [_numberArray[j] doubleValue];
+                    double m = [_numberArray[j - 1] doubleValue];
+                    NSNumber *p = [NSNumber numberWithDouble:m - n];
                     [_numberArray removeObjectAtIndex:j];
                     [_numberArray removeObjectAtIndex:j-1];
                     [_numberArray addObject:p];
                 } else if ([suffix[i]  isEqual: @"*"]) {
-                    long int  j = _numberArray.count - 1;
-                    long int n = [_numberArray[j] intValue];
-                    long int m = [_numberArray[j - 1] intValue];
-                    NSNumber *p = [NSNumber numberWithLong:m * n];
+                     long int  j = _numberArray.count - 1;
+                    double n = [_numberArray[j] doubleValue];
+                    double m = [_numberArray[j - 1] doubleValue];
+                    NSNumber *p = [NSNumber numberWithDouble:m * n];
                     [_numberArray removeObjectAtIndex:j];
                     [_numberArray removeObjectAtIndex:j-1];
                     [_numberArray addObject:p];
                 } else if ([suffix[i]  isEqual: @"/"]) {
                     long int  j = _numberArray.count - 1;
-                    long int n = [_numberArray[j] intValue];
-                    long int m = [_numberArray[j - 1] intValue];
-                    NSNumber *p = [NSNumber numberWithLong:m / n];
+                    double n = [_numberArray[j] doubleValue];
+                    double m = [_numberArray[j - 1] doubleValue];
+                    NSNumber *p = [NSNumber numberWithDouble:m / n];
                     [_numberArray removeObjectAtIndex:j];
                     [_numberArray removeObjectAtIndex:j-1];
                     [_numberArray addObject:p];
