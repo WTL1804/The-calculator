@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MainModel : NSObject
 @property NSMutableArray *numberArray;
+@property NSMutableArray *array;
+@property NSMutableString *String;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -26,12 +26,25 @@
     [self.mainView.textField addObserver:self.mainModel forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(result) name:@"result" object:nil];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finish) name:@"finish" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errors) name:@"errors" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errors1) name:@"errors1" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errors2) name:@"errors2" object:nil];
 }
 
 - (void)clickBtn:(UIButton *)btn {
     NSMutableString *string = [NSMutableString stringWithString:self.mainView.textField.text];
     if (btn.tag == 99) {
+        if (self.mainModel.String.length > 1) {
+            if ([[self.mainModel.String substringWithRange:NSMakeRange(self.mainModel.String.length - 1, 1)]  isEqual: @"."]) {
+                return ;
+            }
+        }
+        for (int i = 0; i < self.mainModel.String.length; i++) {
+            if ([[self.mainModel.String substringWithRange:NSMakeRange(i, 1)]  isEqual: @"."]) {
+                return;
+                break;
+            }
+        }
         [string appendString:@"."];
         self.mainView.textField.text = string;
         [self.view reloadInputViews];
@@ -103,21 +116,41 @@
         [self.view reloadInputViews];
     }
     if (btn.tag == 113) {
+        if (self.mainModel.String.length > 1) {
+            if ([[self.mainModel.String substringWithRange:NSMakeRange(self.mainModel.String.length - 1, 1)]  isEqual: @"/"]) {
+                return ;
+            }
+        }
         [string appendString:@"/"];
         self.mainView.textField.text = string;
         [self.view reloadInputViews];
     }
     if (btn.tag == 114) {
+        if (self.mainModel.String.length > 1) {
+            if ([[self.mainModel.String substringWithRange:NSMakeRange(self.mainModel.String.length - 1, 1)]  isEqual: @"*"]) {
+                return ;
+            }
+        }
         [string appendString:@"*"];
         self.mainView.textField.text = string;
         [self.view reloadInputViews];
     }
     if (btn.tag == 115) {
+        if (self.mainModel.String.length > 1) {
+            if ([[self.mainModel.String substringWithRange:NSMakeRange(self.mainModel.String.length - 1, 1)]  isEqual: @"-"]) {
+                return ;
+            }
+        }
         [string appendString:@"-"];
         self.mainView.textField.text = string;
         [self.view reloadInputViews];
     }
     if (btn.tag == 116) {
+        if (self.mainModel.String.length > 1) {
+            if ([[self.mainModel.String substringWithRange:NSMakeRange(self.mainModel.String.length - 1, 1)]  isEqual: @"+"]) {
+                return ;
+            }
+        }
         [string appendString:@"+"];
         self.mainView.textField.text = string;
         [self.view reloadInputViews];
@@ -137,9 +170,14 @@
     self.mainView.textField.text = string;
     [self.mainView reloadInputViews];
 }
-- (void)errors{
+- (void)errors1{
     self.mainView.textField.text = @"";
-    self.mainView.textField.placeholder = @"错误";
+    self.mainView.textField.placeholder = @"错误1";
+    [self.mainView reloadInputViews];
+}
+- (void)errors2{
+    self.mainView.textField.text = @"";
+    self.mainView.textField.placeholder = @"错误2";
     [self.mainView reloadInputViews];
 }
 /*
